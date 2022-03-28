@@ -1,0 +1,3 @@
+export const FACEBOOK_APP_ID = '477951987443674';
+
+export const FACEBOOK_SECRET = 'e022abcce99f3ada8cd294578589f1c5';

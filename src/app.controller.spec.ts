@@ -24,4 +24,9 @@ describe('AppController', () => {
       expect(appController.getAbout()).toBe('About');
     });
   });
+  describe('root', () => {
+    it('should return "MainPage"', () => {
+      expect(appController.getMainPage()).toBe('MainPage');
+    });
+  });
 });

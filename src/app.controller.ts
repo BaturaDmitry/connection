@@ -19,10 +19,21 @@ export class AppController {
     return req.user;
   }
 }*/
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Post, Render, Res, UseGuards , Request} from '@nestjs/common';
+import { Response } from 'express';
+import { AuthService } from './auth/auth.service';
+import { LocalAuthGuard } from './auth/guards/local-auth.guard';
 
 @Controller()
 export class AppController {
+  constructor(private readonly authService: AuthService) {}
+
+  @UseGuards(LocalAuthGuard)
+  @Post('auth/login')
+  async login(@Request() req) {
+    return this.authService.login(req.user);
+  }
+  
   @Get()
   @Render('Home')
   getHello() {
@@ -32,6 +43,15 @@ export class AppController {
   @Render('About')
   getAbout() {
     return { message: 'NestJS ❤ Svelte' };
+  }
+  @Get('/mainPage')
+  @Render('MainPage')
+  getMainPage() {
+    return { message: 'NestJS ❤ Svelte' };
+  }
+  @Get('/logout')
+  logout(@Res() res: Response): void {
+    res.redirect('/');
   }
 
 }

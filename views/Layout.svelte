@@ -1,5 +1,6 @@
 <script>
-  import Nav from './Nav.svelte';
+  
+  
 </script>
 
 <!doctype html>
@@ -13,7 +14,7 @@
   </head>
   <body>  
     <header>
-      <Nav />
+     
     </header>
     <main>
       <slot />

@@ -6,13 +6,13 @@ import { AuthGuard } from '@nestjs/passport';
 export class FacebookController {
   constructor(private readonly facebookService: FacebookService) {}
 
-  @Get('/auth/facebook')
+  @Get()
   @UseGuards(AuthGuard('facebook'))
   async facebookAuth(@Req() req) {
 
   }
 
-  @Get('/about')
+  @Get('/auth/facebook')
   @UseGuards(AuthGuard('facebook'))
   facebookAuthRedirect(@Req() req) {
     return this.facebookService.facebookLogin(req);

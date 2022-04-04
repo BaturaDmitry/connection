@@ -31,12 +31,11 @@ export class AuthService {
     return this.repository.save(user);
   }
 
-  public async login(body: LoginDto): String {
+  public async login(body: LoginDto): Promise<string> {
     const { name, password }: LoginDto = body;
     const user: User = await this.repository.findOne({ where: { name } });
     
     if (!user) {
-      return {error:'No user found'}
       throw new HttpException('No user found', HttpStatus.NOT_FOUND);
     }
     const isPasswordValid: boolean = this.helper.isPasswordValid(password, user.password);

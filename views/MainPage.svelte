@@ -1,7 +1,6 @@
 <script>
-  import { log } from 'console';
-import Layout from './Layout.svelte';
-import Nav from './MainPageNav.svelte';
+import Layout from './Layout.svelte'
+;
 </script>
 
 <svelte:head>
@@ -9,9 +8,9 @@ import Nav from './MainPageNav.svelte';
 </svelte:head>
 
 <Layout>
-          <div class="mdl-card__actions mdl-card--border">
+         
             <a class="mdl-button" href='/logout'>Log Out</a>
-          </div>
+       
       
 </Layout>
 

@@ -1,8 +1,10 @@
+
+  
 import { Controller, Get, UseGuards, Req } from '@nestjs/common';
 import { GoogleService } from './google.service';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('google')
+@Controller()
 export class GoogleController {
   constructor(private readonly googleService: GoogleService) {}
 
@@ -10,7 +12,7 @@ export class GoogleController {
   @UseGuards(AuthGuard('google'))
   async googleAuth(@Req() req) {}
 
-  @Get('redirect')
+  @Get('/auth/google')
   @UseGuards(AuthGuard('google'))
   googleAuthRedirect(@Req() req) {
     return this.googleService.googleLogin(req);
